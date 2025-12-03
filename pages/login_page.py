@@ -8,8 +8,8 @@ class LoginPage(BasePage):
     LOGIN_BUTTON = (By.ID, "login-button")
     ERROR_MESSAGE = (By.CSS_SELECTOR, "h3[data-test='error']")
 
-    def _init_(self, driver):
-        super()._init_(driver)
+    def __init__(self, driver):
+        super().__init__(driver)
 
     def login(self, username, password):
         """

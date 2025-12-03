@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 class BasePage:
     URL = "https://www.saucedemo.com/"
     
-    def _init_(self, driver: WebDriver):
+    def __init__(self, driver: WebDriver):
         self.driver = driver
         self.wait = WebDriverWait(driver, 10)
         
