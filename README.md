@@ -2,51 +2,97 @@
 
 Este proyecto contiene un *test* automatizado para validar la funcionalidad de inicio de sesión en la aplicación web **SauceDemo**. El objetivo es demostrar la configuración inicial de un proyecto de automatización de pruebas con Python.
 
-***
+En este proyecto vas a aprender a construir un framework de pruebas combinando:
+* Selenium WebDriver + Pytest para pruebas de Front/UI
+* Requests + Pytest para pruebas de API/Backend
+* Page Object Model (POM)
+* Datos parametrizados en JSON
+* Reportes HTML
+* Evidencias automáticas (screenshots)
 
-## 🛠️ Configuración del Proyecto
+---
 
-### 1. Requisitos Previos
+### 🚀 ¿Qué contiene este proyecto?
 
-Asegúrate de tener instalado **Python 3.x**.
+✔ Pruebas automatizadas de Frontend con Selenium
+✔ Pruebas de Backend / API con Requests
+✔ Uso de fixtures, POM, marcadores y parametrización
+✔ Generación automática de screenshots en cada test
+✔ Generación de reporte HTML con detalles de ejecución
+✔ Buenas prácticas de estructura, claridad y escalabilidad
 
-### 2. Instalación de Dependencias
+---
 
-Todas las librerías necesarias para ejecutar los *tests* se encuentran especificadas en el archivo `requirements.txt`. Para instalarlas, usa el siguiente comando en tu terminal:
+### 📂 Estructura inicial del proyecto
 
-```bash
-pip install -r requirements.txt
-```
-
-### Dependencias Clave:
-
-pytest: Framework principal para la ejecución de pruebas.
-
-selenium: Librería para la automatización de navegadores.
-
-***
-
-## 🏃 Ejecución de Pruebas
-
-Para ejecutar el conjunto de pruebas y ver la salida de los mensajes de la prueba (los print()), utiliza el siguiente comando desde la raíz del proyecto.
-
-Comando de Ejecución
-Utilizamos las banderas -v (verbose, para ver detalles por prueba) y -s (para ver la salida de los print()):
-
-```bash
-python -m pytest tests/login-test.py -v -s
-```
-
-***
-
-## 📁 Estructura del Proyecto
-```
-.
+text
+selenium-pytest/
+├── api/
+│   └── api_client.py
+│
+├── data/
+│   └── data_login.json            # Datos parametrizados
+│
 ├── pages/
-│   └── base_page.py    # Clase Base: Contiene la lógica del WebDriver, esperas y métodos comunes.
+│   ├── base_page.py
+│   ├── login_page.py
+│   ├── products_page.py
+│   ├── cart_page.py
+│   └── checkout_page.py
+│
 ├── tests/
-│   └── login-test.py   # Script de Prueba: Contiene la fixture del driver y el caso de prueba.
-├── .gitignore          # Archivo para ignorar compilaciones de Python y logs.
-├── README.md           # Documentación del proyecto.
-└── requirements.txt    # Lista de dependencias de Python.
-```
+│   ├── front/
+│   │   ├── login_test.py
+│   │   ├── products_test.py
+│   │   ├── checkout_test.py
+│   │   └── conftest.py            # driver_setup + screenshots
+│   │
+│   └── back/
+│       └── getApi_test.py
+│
+├── screenshots/                   # Evidencias automáticas (ignorada en .gitignore)
+├── reports/                       # Reportes HTML (ignorados)
+│
+├── requirements.txt
+├── .gitignore
+└── README.md
+
+
+---
+
+### ▶️ ¿Cómo ejecutar?
+1. Clonar el repositorio:
+   bash
+   git clone https://github.com/TU_USUARIO/selenium-pytest.git
+   
+
+2. Navegar al proyecto:
+   bash
+   cd selenium-pytest
+   
+
+3. Instalar dependencias:
+   bash
+   py -m pip install -r requirements.txt
+   
+
+4. Ejecutar los tests con Pytest:
+   bash
+   py -m pytest -v
+   
+
+## 🎯 Ejecutar por separado: Frontend vs Backend
+
+Gracias a los markers (@pytest.mark.front y @pytest.mark.back) podés ejecutar por tipo de test.
+
+5. Ejecutar solo pruebas Front/UI:
+   bash
+   py -m pytest -m front -v
+   
+
+6. Ejecutar solo pruebas Back/API
+   bash
+   py -m pytest -m back -v
+   
+   
+---
